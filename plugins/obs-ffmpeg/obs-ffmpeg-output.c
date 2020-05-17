@@ -712,6 +712,24 @@ static inline void copy_data(AVFrame *pic, const struct video_data *frame,
 	}
 }
 
+static uint8_t clip(int32_t x)
+{
+	if (x < 0) x = 0;
+	else if (x > 255) x = 255;
+	return x;
+}
+
+static void YUV_to_RGB(uint8_t y, uint8_t u, uint8_t v, uint8_t* r, uint8_t* g, uint8_t* b)
+{
+	int32_t c = y - 16;
+	int32_t d = u - 128;
+	int32_t e = v - 128;
+
+	*r = clip((int32_t)(298 * c + 409 * e + 128) >> 8);
+	*g = clip((int32_t)(298 * c - 100 * d - 208 * e + 128) >> 8);
+	*b = clip((int32_t)(298 * c + 516 * d + 128) >> 8);
+}
+
 static void receive_video(void *param, struct video_data *frame)
 {
 	struct ffmpeg_output *output = param;

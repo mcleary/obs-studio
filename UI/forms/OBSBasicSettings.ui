@@ -119,7 +119,7 @@
      <item>
       <widget class="QStackedWidget" name="settingsPages">
        <property name="currentIndex">
-        <number>0</number>
+        <number>2</number>
        </property>
        <widget class="QWidget" name="generalPage">
         <layout class="QVBoxLayout" name="verticalLayout_18">
@@ -151,8 +151,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>803</width>
-              <height>1026</height>
+              <width>806</width>
+              <height>1165</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_19">
@@ -1375,7 +1375,7 @@
              <item>
               <widget class="QStackedWidget" name="outputModePages">
                <property name="currentIndex">
-                <number>0</number>
+                <number>1</number>
                </property>
                <widget class="QWidget" name="easyOutputsPage">
                 <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -1866,7 +1866,7 @@
                  <item>
                   <widget class="QTabWidget" name="advOutTabs">
                    <property name="currentIndex">
-                    <number>0</number>
+                    <number>1</number>
                    </property>
                    <property name="usesScrollButtons">
                     <bool>true</bool>
@@ -2116,6 +2116,11 @@
                             <string>Basic.Settings.Output.Adv.Recording.Type.FFmpegOutput</string>
                            </property>
                           </item>
+                          <item>
+                           <property name="text">
+                            <string>Basic.Settings.Output.Adv.Recording.Type.ImageSequence</string>
+                           </property>
+                          </item>
                          </widget>
                         </item>
                        </layout>
@@ -2124,7 +2129,7 @@
                      <item>
                       <widget class="QStackedWidget" name="stackedWidget">
                        <property name="currentIndex">
-                        <number>0</number>
+                        <number>2</number>
                        </property>
                        <widget class="QWidget" name="advOutRecStandard">
                         <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -2344,7 +2349,7 @@
                                </sizepolicy>
                               </property>
                               <property name="currentIndex">
-                               <number>0</number>
+                               <number>1</number>
                               </property>
                               <widget class="QWidget" name="recTracks">
                                <layout class="QHBoxLayout" name="horizontalLayout_9">
@@ -2902,6 +2907,31 @@
                             <bool>true</bool>
                            </property>
                           </widget>
+                         </item>
+                        </layout>
+                       </widget>
+                       <widget class="QWidget" name="advOutImgSequence">
+                        <layout class="QFormLayout" name="formLayout_8">
+                         <item row="0" column="0">
+                          <widget class="QLabel" name="label_45">
+                           <property name="text">
+                            <string>Folder Path:</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="1">
+                          <layout class="QHBoxLayout" name="horizontalLayout_26">
+                           <item>
+                            <widget class="QLineEdit" name="advOutRecImageSeqPath"/>
+                           </item>
+                           <item>
+                            <widget class="QPushButton" name="advOutRecImageSeqBrowse">
+                             <property name="text">
+                              <string>Browse</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
                          </item>
                         </layout>
                        </widget>
@@ -3773,8 +3803,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>555</width>
-              <height>469</height>
+              <width>820</width>
+              <height>641</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_50">
@@ -4582,8 +4612,8 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>98</width>
-           <height>28</height>
+           <width>818</width>
+           <height>677</height>
           </rect>
          </property>
          <layout class="QFormLayout" name="hotkeyLayout">

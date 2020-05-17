@@ -3256,10 +3256,12 @@ static inline const char *OutputModeFromIdx(int idx)
 
 static inline const char *RecTypeFromIdx(int idx)
 {
-	if (idx == 1)
+	if (idx == 0)
+		return "Standard";
+	else if (idx == 1)
 		return "FFmpeg";
 	else
-		return "Standard";
+		return "ImageSequence";
 }
 
 static void WriteJsonData(OBSPropertiesView *view, const char *path)
@@ -3804,6 +3806,18 @@ void OBSBasicSettings::on_advOutFFPathBrowse_clicked()
 		return;
 
 	ui->advOutFFRecPath->setText(dir);
+}
+
+void OBSBasicSettings::on_advOutRecImageSeqBrowse_clicked()
+{
+	QString dir = QFileDialog::getExistingDirectory(
+		this, QTStr("Basic.Settings.Output.SelectDirectory"),
+		ui->advOutRecImageSeqPath->text(),
+		QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+	if (dir.isEmpty())
+		return;
+
+	ui->advOutRecImageSeqPath->setText(dir);
 }
 
 void OBSBasicSettings::on_advOutEncoder_currentIndexChanged(int idx)
