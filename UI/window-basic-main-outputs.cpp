@@ -1119,6 +1119,7 @@ struct AdvancedOutput : BasicOutputHandler {
 
 	bool ffmpegOutput;
 	bool ffmpegRecording;
+	bool imageSequenceOutput;
 	bool useStreamEncoder;
 	bool usesBitrate = false;
 
@@ -1193,6 +1194,7 @@ AdvancedOutput::AdvancedOutput(OBSBasic *main_) : BasicOutputHandler(main_)
 	const char *recordEncoder =
 		config_get_string(main->Config(), "AdvOut", "RecEncoder");
 
+	imageSequenceOutput = astrcmpi(recType, "ImageSequence") == 0;
 	ffmpegOutput = astrcmpi(recType, "FFmpeg") == 0;
 	ffmpegRecording =
 		ffmpegOutput &&
@@ -1211,7 +1213,13 @@ AdvancedOutput::AdvancedOutput(OBSBasic *main_) : BasicOutputHandler(main_)
 		      astrcmpi(rate_control, "VBR") == 0 ||
 		      astrcmpi(rate_control, "ABR") == 0;
 
-	if (ffmpegOutput) {
+	if (imageSequenceOutput) {
+		fileOutput = obs_output_create("image_sequence_output", "adv_image_sequence_output", nullptr, nullptr);
+		if (!fileOutput)
+			throw "Failed to create recording Image Sequence output "
+			      "(advanced output)";
+		obs_output_release(fileOutput);
+	} else if (ffmpegOutput) {
 		fileOutput = obs_output_create(
 			"ffmpeg_output", "adv_ffmpeg_output", nullptr, nullptr);
 		if (!fileOutput)

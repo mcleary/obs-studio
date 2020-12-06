@@ -6,6 +6,7 @@ class OBSBasic;
 
 struct BasicOutputHandler {
 	OBSOutput fileOutput;
+	OBSOutput imageSequenceOutput;
 	OBSOutput streamOutput;
 	OBSOutput replayBuffer;
 	OBSOutput virtualCam;

@@ -1875,7 +1875,10 @@ void OBSBasicSettings::LoadAdvOutputRecordingSettings()
 	int tracks = config_get_int(main->Config(), "AdvOut", "RecTracks");
 	int flvTrack = config_get_int(main->Config(), "AdvOut", "FLVTrack");
 
-	int typeIndex = (astrcmpi(type, "FFmpeg") == 0) ? 1 : 0;
+	int typeIndex = IdxFromRecType(type);
+
+	ui->advOutRecImageSeqPath->setText(path);
+
 	ui->advOutRecType->setCurrentIndex(typeIndex);
 	ui->advOutRecPath->setText(path);
 	ui->advOutNoSpace->setChecked(noSpace);
